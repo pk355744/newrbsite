@@ -14,8 +14,6 @@ import os
 import django_heroku
 import dj_database_url
 DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$a^w$eh7g*&@dt%hfv7qu*a87u(b3$(5ng(f@bj@%9a*2_z+te'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['rbfashion.herokuapp.com']
 
@@ -49,15 +47,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 ROOT_URLCONF = 'wrappers.urls'
 
@@ -85,8 +82,12 @@ WSGI_APPLICATION = 'wrappers.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': ('d5l5j7r4lgdqg6'),
+        'USER': ('qdcloejctdgvmv'),
+        'PASSWORD':('a598ece27dac66a66686c7c3fdafc4823f53a2c08d34ecfffaa72fb89b1bf096'),
+        'HOST': ('ec2-3-231-254-204.compute-1.amazonaws.com'),
+        'PORT': ('5432'),            
     }
 }
 
@@ -127,28 +128,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "live-static-files", "static-root")
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+LOGIN_URL = 'login'
 
-#STATIC_ROOT = "/home/cfedeploy/webapps/cfehome_static_root/"
-
-MEDIA_URL = "/media/"
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "live-static-files", "media-root")
+LOGIN_REDIRECT_URL = 'home'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'pk.amitech@gmail.com'
-EMAIL_HOST_PASSWORD = '5480'
+EMAIL_HOST_USER = 'YOUR EMAIL HERE'
+EMAIL_HOST_PASSWORD = 'YOUR PASSWORD HERE'
 EMAIL_USE_TLS = True
 
 DEFAULT_AUTO_FIELD= 'django.db.models.BigAutoField'
