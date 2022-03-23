@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import django_heroku
 import dj_database_url
-db_from_env = dj_database_url.config()
 DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
 
 
@@ -148,8 +147,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "live-static-files", "media-root")
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'YOUR EMAIL HERE'
-EMAIL_HOST_PASSWORD = 'YOUR PASSWORD HERE'
+EMAIL_HOST_USER = 'pk.amitech@gmail.com'
+EMAIL_HOST_PASSWORD = '5480'
 EMAIL_USE_TLS = True
 
 DEFAULT_AUTO_FIELD= 'django.db.models.BigAutoField'
