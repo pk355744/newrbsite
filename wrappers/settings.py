@@ -14,7 +14,7 @@ import os
 import django_heroku
 import dj_database_url
 db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
