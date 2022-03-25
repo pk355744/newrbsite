@@ -79,12 +79,8 @@ WSGI_APPLICATION = 'wrappers.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': ('d5l5j7r4lgdqg6'),
-        'USER': ('qdcloejctdgvmv'),
-        'PASSWORD':('a598ece27dac66a66686c7c3fdafc4823f53a2c08d34ecfffaa72fb89b1bf096'),
-        'HOST': ('ec2-3-231-254-204.compute-1.amazonaws.com'),
-        'PORT': ('5432'),            
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
