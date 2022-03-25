@@ -1,0 +1,6 @@
+/static/**
+!/static
+_pycache_
+*/migrations/**
+!*/migrations
+!*/migrations/_init_._pycache_

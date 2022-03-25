@@ -1,10 +1,10 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from saler.views import admin2
-
+from django.views.static import serve
 urlpatterns = [
     path('wrappers/india/my/admin/pannel/home/', admin.site.urls),
     path('wrappers/india/my/admin/pannel/admin20/', admin2, name = 'admin2'),
@@ -17,11 +17,10 @@ urlpatterns = [
     path("password-reset-confirm/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(template_name='main/password_reset_confirm.html'), name="password_reset_confirm"),
     path("password-reset-complete/", auth_views.PasswordResetCompleteView.as_view(template_name='main/password_reset_complete.html'), name="password_reset_complete"),
     path("coupon/",include('coupon.urls')),
+    re_path(r'^media/(?p<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     
 ]
 
 if settings.DEBUG:
-    urlpatterns += (
-        static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) +
-        static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-        )
+    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATICFILES_DIRS[0])
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
