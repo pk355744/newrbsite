@@ -17,7 +17,7 @@ urlpatterns = [
     path("password-reset-confirm/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(template_name='main/password_reset_confirm.html'), name="password_reset_confirm"),
     path("password-reset-complete/", auth_views.PasswordResetCompleteView.as_view(template_name='main/password_reset_complete.html'), name="password_reset_complete"),
     path("coupon/",include('coupon.urls')),
-   # re_path(r'^media/(?p<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+   re_path(r'^media/(?p<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     
 ]
 
