@@ -143,12 +143,10 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'YOUR EMAIL HERE'
-EMAIL_HOST_PASSWORD = 'YOUR PASSWORD HERE'
-EMAIL_USE_TLS = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 DEFAULT_AUTO_FIELD= 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
