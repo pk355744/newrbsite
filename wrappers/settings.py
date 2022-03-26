@@ -135,7 +135,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT=os.path.join(BASE_DIR,"/static/")
 STATIC_URL = '/static/'
 
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static_cdn")]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = 'login'
@@ -143,10 +143,12 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'YOUR EMAIL HERE'
+EMAIL_HOST_PASSWORD = 'YOUR PASSWORD HERE'
+EMAIL_USE_TLS = True
 
 DEFAULT_AUTO_FIELD= 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
